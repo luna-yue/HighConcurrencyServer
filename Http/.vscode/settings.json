@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "functional": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "fstream": "cpp",
+        "iosfwd": "cpp",
+        "cstdint": "cpp"
+    },
+    "cmake.sourceDirectory": "/home/luna/并发服务器v1/source"
+}
