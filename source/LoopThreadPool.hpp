@@ -18,7 +18,7 @@ class LoopThreadPool{
    {}
    void Create()
    {
-    cout<<"_child_thread_cnt"<<_child_thread_cnt<<endl;
+    //cout<<"_child_thread_cnt"<<_child_thread_cnt<<endl;
        if(_child_thread_cnt<0)
        {
         lg(Fatal,"LoopThreadPool::negative thread cnt%d",_child_thread_cnt);

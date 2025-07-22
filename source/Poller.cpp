@@ -10,10 +10,10 @@ void Poller::Remove(Channel *tmp)
             return;
         }
         int ret = Update(fd, EPOLL_CTL_DEL, nullptr);
-        if (ret < 0)
-        {
-            lg(Error, "Poller:: Remove ERROR %s", strerror(errno));
-        }
+        //if (ret < 0)
+        //{
+         //   lg(Error, "Poller:: Remove ERROR %s", strerror(errno));
+        //}
         _channels.erase(fd);
         close(fd);
     }
@@ -21,7 +21,7 @@ void Poller::Remove(Channel *tmp)
     {
         char threadName[16] = {0}; // Linux 限制线程名最长 16 字节（包括结尾 '\0'）
     pthread_getname_np(pthread_self(), threadName, sizeof(threadName));
-    cout<<string(threadName)<<"!";
+    //cout<<string(threadName)<<"!";
         int fd = tmp->Getfd();
         lg(Debug,"POLLER::ADD RECEIVED%d",fd);
         auto it = _channels.find(fd);
@@ -35,10 +35,10 @@ void Poller::Remove(Channel *tmp)
         events.data.fd = fd;
         events.events = tmp->GetEvents();
         int ret = Update(fd, EPOLL_CTL_ADD, &events);
-        if (ret < 0)
+        /*if (ret < 0)
         {
-            lg(Error, "Poller:: ADD ERROR %s", strerror(errno));
-        }
+            //lg(Error, "Poller:: ADD ERROR %s", strerror(errno));
+        }*/
         //cout<<"Add" <<tmp->Getfd()<<" "<<"done"<<endl;
     }
     void Poller::Mod(Channel *tmp) // 传入想要关注的事件
@@ -59,7 +59,7 @@ void Poller::Remove(Channel *tmp)
         int ret = Update(fd, EPOLL_CTL_MOD, &events);
         if (ret < 0)
         {
-            lg(Error, "Poller:: Mod ERROR %s", strerror(errno));
+            //lg(Error, "Poller:: Mod ERROR %s", strerror(errno));
             return;
         }
         tmp->SetEvents(new_events);

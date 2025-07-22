@@ -138,7 +138,7 @@ void Connection::SendInLoop(Buffer &buf)
     _out_buffer.Write(buf);
     int sz=buf.UsedSpace();
     _out_buffer.MoveWriteOffset(sz);
-    cout<<"send in loop :> out buffer used:>"<<_out_buffer.UsedSpace()<<endl<<endl;
+    //cout<<"send in loop :> out buffer used:>"<<_out_buffer.UsedSpace()<<endl<<endl;
     if (!_channel.WriteAble())
         _channel.EnableWrite();
 }
